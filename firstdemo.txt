@@ -8,4 +8,5 @@ Hari bol Hari bol
 
 changes done within ubuntu
 
-again implementing the merge from master to demo after switching from demo to master branch with master as head.
+again implementing the merge master to demo after switching from demo to master branch with master as head.
+so one should be at the branch which has to be merge with given branch.
