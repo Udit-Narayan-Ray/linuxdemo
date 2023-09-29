@@ -11,7 +11,5 @@ changes done within ubuntu
 so one should be at the branch which has to be merge with given branch.
 
 
-change within github 
-
-secondary changes.
+change within github secondary changes.
 
