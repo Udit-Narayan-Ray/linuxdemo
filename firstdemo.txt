@@ -14,4 +14,4 @@ so one should be at the branch which has to be merge with given branch.
 change within github secondary changes.
 
 
-for checking merge.
+for checking merge from ab to master.
