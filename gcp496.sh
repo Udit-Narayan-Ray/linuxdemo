@@ -1,6 +1,6 @@
 echo "Enter your zone"
-read MY_ZONE
-export MY_ZONE=${MY_ZONE}
+read zone
+export MY_ZONE=${zone}
 gcloud container clusters create simplecluster --zone $MY_ZONE --num-nodes 2 --metadata=disable-legacy-endpoints=false
 kubectl version
 kubectl run -it --rm gcloud --image=google/cloud-sdk:latest --restart=Never -- bash
