@@ -1,5 +1,5 @@
 # VNC_EC2_Connect
-->This is the repository to describe the details about how to connect to remote aws ec2 instance running on Linux or Ubuntu from windows. We use TigerVNC for GUI support to Linux or Ubuntu running over ec2 instances.
+->This is for the information to describe the details about how to connect to remote aws ec2 instance running on Linux or Ubuntu from windows. We use TigerVNC for GUI support to Linux or Ubuntu running over ec2 instances.
 
 #Problem
 ->Window with low resources and want to use cloud provider resources and not able to use because of CLI interface. 
