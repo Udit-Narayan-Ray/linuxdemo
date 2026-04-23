@@ -30,5 +30,33 @@ Connecting to remote aws EC2 Instance using PuTTy or PowerShell over SSH.
   session category.
 - once every setup is completed use TigerVNC to connect with address localhost:5901 and provide the password that you set up earlier with vncpasswd.
 
+
+#When using RDP instead of TigerVNC using XRDP but the connection set up is similar using PuTTY.
+-Install a lightweight desktop (XFCE)
+ sudo apt update
+ sudo apt install -y xrdp xfce4 xfce4-goodies dbus-x11
+
+-install open source remote deskop protocol using below 
+ sudo apt install xrdp -y
+- Enabling and restart the xrdp
+ sudo systemctl enable xrdp
+ sudo systemctl start xrdp
+ systemctl status xrdp
+- Allowing XRDP to use XFCE
+ echo xfce4-session > ~/.xsession
+ sudo sed -i.bak '/fi/a startxfce4' /etc/xrdp/startwm.sh
+
+- change last line with "startxfce4" to startwm.sh file
+  sudo nano /etc/xrdp/startwm.sh
+- Giving permission to use certifications and restart xrdp
+ sudo adduser xrdp ssl-cert
+ sudo systemctl restart xrdp
+
+- Open EC2 Security Group to modify the inbound rule to EC2 instance
+  Type: RDP, port 3389 and IP to Own IP address.
+- change password of user ubuntu in linux environment using 
+  sudo passwd ubuntu
+- Use RDP app of window to login to EC2 through XRDP by providing user and password i.e ubuntu and it passwod set up earlier.
+
 Jay Shree @RadhaKrishna. !Hari Bol!.
 
