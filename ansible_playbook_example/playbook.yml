@@ -1,0 +1,23 @@
+---
+- name: 1st Playbook for getting the information of current aws ec2 instances
+  hosts: localhost
+  become: false
+
+  tasks:
+    - name: All EC2 instances details fetching from localhost
+      amazon.aws.ec2_instance_info:
+        region: ap-south-1
+      register: ec2_info
+
+    - name: Required EC2 instances details
+      debug:
+        msg: >
+          ID: {{ item.instance_id }},
+          Name: {{ item.tags.Name | default('N/A') }},
+          Type: {{ item.instance_type }},
+          State: {{ item.state.name }},
+          Private IP: {{ item.private_ip_address }},
+          Public IP: {{ item.public_ip_address | default('N/A') }}
+      loop: "{{ ec2_info.instances }}"
+      loop_control:
+        label: "{{ item.instance_id }}"
