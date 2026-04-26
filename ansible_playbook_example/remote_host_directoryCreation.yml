@@ -1,0 +1,13 @@
+---
+- name: 1st Playbook for creating the directory in each host present in inventory file
+  hosts: remote_host
+  become: false
+
+  tasks:
+    - name: Pinging to check the connectivity to the remote host
+      ansible.builtin.ping:
+    - name: creating directory 'remote_ansible' with managed node users from central node
+      #module- ansible.builtin.shell : attribute- shell/linux command for completing operation
+      ansible.builtin.shell: mkdir -p ~/remote_ansible
+    - name: printing the list of file to see the details
+      ansible.builtin.shell: ls -lt | grep 'remote_ansible'
