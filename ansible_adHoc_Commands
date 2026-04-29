@@ -22,7 +22,7 @@ ansible -b -i inventory.ini remote -m apt/yum/dnf -a 'name=mysql/nginx state=pre
 ansible -i inventory.ini all -m 'service' -a 'name=nginx/mysql state=started/restarted/reloaded/stopped'
 
 #To check status of services 'nginx or mysql' in remote hosts which is install
-ansible -i inventory.ini all -m service -a 'systemctl status nginx/mysql'
+ansible -i inventory.ini all -m shell -a 'systemctl status nginx/mysql'
 
 #To create user 
 ansible -i inventory.ini all -m user -a 'name=username state=present/absent'
