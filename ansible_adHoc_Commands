@@ -27,7 +27,11 @@ ansible -i inventory.ini all -m shell -a 'systemctl status nginx/mysql'
 #To create user 
 ansible -i inventory.ini all -m user -a 'name=username state=present/absent'
 
+#To copy file from local to remote host
+ansible -i inventory.ini all -m copy -a "src=<path> dest=<path> mode=<777> owner=<root>"
+
 #Using playbook to completed the task
 ansible-playbook -i inventory.ini <playbook.yml>
+
 
 
