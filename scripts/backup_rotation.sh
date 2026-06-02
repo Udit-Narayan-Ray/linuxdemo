@@ -30,13 +30,30 @@ create_backup(){
 	#using ZIP
 	#find ${src_dir} -type f -name '*.log' -mmin +${archive_days} -exec zip ${dest_dir}/${timestamp}.zip {} +
 	#using TAR
-	find ${src_dir} -type f -name '*.log' -mmin +${archive_days} -exec tar -czf ${dest_dir}/${timestamp}.tar {} + 
+	find ${src_dir} -type f -name '*.log' -mmin +${archive_days} -exec tar -czf ${dest_dir}/${timestamp}.tgz {} + 
 }
 
 process_retention(){
 	find ${src_dir} -type f -mmin +${archive_days} -exec rm {} +
 }
 
+process_rotation(){
+	#storing in arrays
+	backups=($(ls -t ${dest_dir}/*.tgz))
+
+	if [[ ${#backups[@]} -gt 5 ]]
+	then
+		echo "Performing Rotation in ${dest_dir} " 
+		#Removing only file which are not 5 latest tar file
+
+		older_backup=${backups[@]:5}
+		for backup in ${older_backup}
+		do
+			rm -f ${backup}
+		done
+	fi
+
+}
 
 if [[ -d ${dest_dir} ]]
 then
@@ -50,6 +67,9 @@ else
 	echo "Creating Backup.."	
 	process_retention
 fi
+
+
+process_rotation
 
 
 
